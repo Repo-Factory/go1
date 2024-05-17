@@ -1,49 +1,18 @@
-# v3.8.0
-The unitree_legged_sdk is mainly used for communication between PC and Controller board.
-It also can be used in other PCs with UDP.
+# DICE Labs GO1
 
-### Notice
-support robot: Go1
+## Description
+This codebase houses all of Dicelab's custom code for the Unitree Go1 robot dog. 
 
-not support robot: Laikago, Aliengo, A1. (Check release [v3.3.1](https://github.com/unitreerobotics/unitree_legged_sdk/releases/tag/v3.3.1) for support)
+## File Structure
+`scpt` - See here for some scripts regarding codebase management
+`src`  - Source code of project
 
-### Sport Mode
-```bash
-Legged_sport    >= v1.36.0
-firmware H0.1.7 >= v0.1.35
-         H0.1.9 >= v0.1.35
-```
+### Programming Summary
+The majority of this codebase is written in python and shouldn't require any compilation to be used. Some parts are written in C# for binding to the Unity code, but the dog simulation code can be found at another codebase [here](https://github.com/DiceLabs/dog_sim). For more information on code functionality please see the [src](src) directory.
 
-### Dependencies
-* [Boost](http://www.boost.org) (version 1.5.4 or higher)
-* [CMake](http://www.cmake.org) (version 2.8.3 or higher)
-* [g++](https://gcc.gnu.org/) (version 8.3.0 or higher)
+### Running/Execution
+To clone the source code use this command
 
+    git clone https://github.com/DiceLabs/go1
 
-### Build
-```bash
-mkdir build
-cd build
-cmake ../
-make
-```
-
-### Run
-
-#### Cpp
-Run examples with 'sudo' for memory locking.
-
-#### Python
-##### arm
-change `sys.path.append('../lib/python/amd64')` to `sys.path.append('../lib/python/arm64')`
-
-
-### How to run: 
-Bring up the dog, 
-Connect via Wifi.
-run go_srv.py on the dog
-
-Come back run yolov5/yolo_srv_internal.py
-
-Go in terminal and run: go_srv.py
-Open unity and press play.
+I prefer to keep executable and source code separate so I have an [install.sh](scpt/install.sh) script that will place all python files into a ROBOT_LIB directory. Run that script in the root directory of this project so that it copies all files to be executed. This directory is (should be) included in the PATH environment variable from the ~/.bashrc so it can serve as a convenient single point of storage for executed code. To run any script, you can omit the interpreter and any other syntax, just write the file name directly into the terminal - ie. executable.py 
