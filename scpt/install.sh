@@ -2,7 +2,7 @@
 
 # This is a very stupid and dangerous script but it makes my life really easy
 # This script's functionality depends on the directory you run it from
-# It will find all files that end in the suffixes below and place them into the INSTALL_DIR. It also makes them executable
+# It will find all files under the current directory that end in the suffixes below and place them into the INSTALL_DIR. It also makes them executable
 # This is so I can take interpreted code and auxilary files and place them in a single directory so they're easily callable from anywhere
 
 INSTALL_DIR="$HOME/ROBOT_LIB"
