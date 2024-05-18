@@ -14,7 +14,7 @@ There are five main parts to the dog
     - go_srv - Actual API that interacts with the Go1 hardware
     - ar_srv - Activity recognition code which continually runs
     - yolo_srv - Object recognition service for locating humans
-    - speech_srv - Text to speech service using pyttsx3 to send audio to BT speaker
+    - speak_srv - Text to speech service using pyttsx3 to send audio to BT speaker
     - unity_srv - This is a group of bridge services that allow Unity to communicate with other systems
 
 The unity_srv is made up of these services
@@ -22,7 +22,7 @@ The unity_srv is made up of these services
     - linear_srv
     - angular_srv
     - vision_srv
-    - speech_srv
+    - speech_srv (note this is different than the speak_srv, this doesn't make the dog talk it just allows Unity to make the request)
 
 To "start" the dog, all these services need to be turned on, and then the main Unity script needs to be played
 All services can be started separately by name, but there are also scripts I made which fork many at the same time

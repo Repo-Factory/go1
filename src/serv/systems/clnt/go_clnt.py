@@ -50,7 +50,3 @@ def get_info():
                     args={}
     ))
     return response
-
-if __name__ == "__main__":
-    print(get_info())
-    side(.2)

@@ -1,6 +1,12 @@
 #!/usr/bin/python3
+
+""" 
+    This code interacts with Unitree's API to cause the desired movements on the dog
+"""
+
 import robot_interface as sdk # type: ignore
-from timer import Timer
+# Note that comment above is so VSCode doesn't mark that it can't find that module which is actually a dynamic library
+# If that library robot_interface.so isn't in the same directory as the python file, it won't work 
 
 HIGHLEVEL = 0xee
 

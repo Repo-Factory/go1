@@ -1,3 +1,7 @@
+""" 
+    This script will be played on the Unitree's mounted Pi and will continually send frames to a web endpoint which can be intercepted
+"""
+
 import cv2
 from flask import Flask, Response
 import threading

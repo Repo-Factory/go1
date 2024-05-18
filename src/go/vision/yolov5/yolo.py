@@ -1,34 +1,13 @@
 #!/usr/bin/env python3
 
-# YOLOv5 🚀 by Ultralytics, AGPL-3.0 license
 """
-Run YOLOv5 detection inference on images, videos, directories, globs, YouTube, webcam, streams, etc.
-
-Usage - sources:
-    $ python detect.py --weights yolov5s.pt --source 0                               # webcam
-                                                     img.jpg                         # image
-                                                     vid.mp4                         # video
-                                                     screen                          # screenshot
-                                                     path/                           # directory
-                                                     list.txt                        # list of images
-                                                     list.streams                    # list of streams
-                                                     'path/*.jpg'                    # glob
-                                                     'https://youtu.be/Zgi9g1ksQHc'  # YouTube
-                                                     'rtsp://example.com/media.mp4'  # RTSP, RTMP, HTTP stream
-
-Usage - formats:
-    $ python detect.py --weights yolov5s.pt                 # PyTorch
-                                 yolov5s.torchscript        # TorchScript
-                                 yolov5s.onnx               # ONNX Runtime or OpenCV DNN with --dnn
-                                 yolov5s_openvino_model     # OpenVINO
-                                 yolov5s.engine             # TensorRT
-                                 yolov5s.mlmodel            # CoreML (macOS-only)
-                                 yolov5s_saved_model        # TensorFlow SavedModel
-                                 yolov5s.pb                 # TensorFlow GraphDef
-                                 yolov5s.tflite             # TensorFlow Lite
-                                 yolov5s_edgetpu.tflite     # TensorFlow Edge TPU
-                                 yolov5s_paddle_model       # PaddlePaddle
+    This object detection code is an absolute eyesore but it works
+    Basically I took yolo's provided code and threw a bunch of stuff around to get it so it could run as a service
+    The important part to note is there's a constructor that takes care of camera init when the service is started (in dumb terms, camera turns on once)
+    Then it has the one public "detect" API which just returns whether a human is detected or not and can be called at any time the service is running
+    It's ugly but it works so just tuck it away and forget about it, if you need new functionality good luck.
 """
+
 import os
 import sys
 from pathlib import Path
@@ -197,12 +176,15 @@ class PeopleDetector:
                     
 
     def detect(self, filepath):
+        """ 
+            Public API can be passed a string to various file paths (video, photo, etc) and returns whether a human is detected or not 
+        """
         try:
             source, webcam, screenshot = self.ext_source(filepath)
             dataset, webcam, bs = self.load(webcam, screenshot, source, self.imgsz, self.stride, self.pt, self.vid_stride)
             return self.infer(self.model, self.names, dataset, self.save_dir, webcam, self.pt, bs)
         except:
-            print("Encountered error with source, continuing...")
+            print("Encountered error with source file, continuing...")
 
 if __name__ == '__main__':
     detector = PeopleDetector()
