@@ -29,8 +29,9 @@ All services can be started separately by name, but there are also scripts I mad
 
 Here is the most comprehensive way to turn on the dog 
 
-    - Go to go/vision/yolov5 and run python3 yolo_srv_internal.py (this has to be run from here for yolo's dependencies)
-    - Run dog.py which will fork unity bridge, activity recognition, and speech services
+    - ssh into dog using ssh pi@pi, then run go_srv.py
+    - Locally, go to go/vision/yolov5 and run python3 yolo_srv_internal.py (this has to be run from here for yolo's dependencies)
+    - Run dog.py locally which will fork unity bridge, activity recognition, and speech services
     - Go to Unity and press the start button
 
 Note that for every run, you will have to ctrl+C and start dog.py
